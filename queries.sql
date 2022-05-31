@@ -21,3 +21,22 @@ SELECT * from animals WHERE name != 'Gabumon';
 
 /* Returns all data for Pikachu, & Devimon*/
 SELECT * FROM animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3; 
+
+/*Returns the total number of animals in the database*/
+SELECT COUNT(*) FROM animals;
+
+/*Counts how many animals have tried to escape*/
+SELECT COUNT(*) FROM animals WHERE escape_attempts > 0;
+
+/*Provides the average weight of all animals*/
+SELECT AVG(weight_kg) FROM animals;
+
+/*Provides whether neutered or non-neutered animals escape the most and provides the total attempts within the group that escapes the most*/
+SELECT neutered, SUM(escape_attempts) AS Total_Number_of_Escape_Attempts FROM animals WHERE escape_attempts > 0 GROUP BY neutered ORDER BY Total_Number_of_Escape_Attempts DESC LIMIT 1;
+
+
+/*Provides minimum and maximum weight of each type of animal*/
+SELECT species, MIN(weight_kg), MAX(weight_kg) FROM animals GROUP BY species;
+
+/*Provides Average number of escape attempts per animal type born between the years 1990 and 2000*/
+SELECT species, AVG(escape_attempts) as Average_Escape_Attempts FROM animals WHERE date_of_birth > '1990-01-01' AND date_of_birth <= '2000-12-31' GROUP BY species;
