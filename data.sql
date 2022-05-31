@@ -12,4 +12,23 @@ INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) 
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Blossom', '1998-10-13', 17, TRUE, 3);
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Ditto', '2022-05-14', 22, TRUE, 4);
 
+/* Transactions */
 
+/* Add 'unspecified' as Species for each animal in the entire table then ROLLBACK the change */
+BEGIN;
+UPDATE animals SET species = 'unspecified';
+ROLLBACK;
+
+/*Sets Species to DIGIMON for all named animals with 'mon' in the name. Then sets Species to POKEMON for each remaining animal without a species set*. This is a COMMIT Transaction (permanent change)*/
+BEGIN;
+UPDATE animals SET species = 'DIGIMON' WHERE name LIKE '%mon%';
+UPDATE animals SET species = 'DIGIMON' WHERE species IS NULL;
+COMMIT;
+
+
+/*Deletes ALL records in the database, then rolls-back the deletion to bring back all of the data*/
+BEGIN;
+DELETE FROM animals;
+ROLLBACK;
+
+/*Deletes all animals born after January 1st 2022, makes a savepoint after the deletion, updates all animals to the product of their weight_kg * -1, rollsback to the previous savepoint, multiplies the weight of ONLY animals with negative weight_kg to the product of weightKG * 1. This is a COMMIT Transaction (permanent change)*/
