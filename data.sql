@@ -31,4 +31,12 @@ BEGIN;
 DELETE FROM animals;
 ROLLBACK;
 
-/*Deletes all animals born after January 1st 2022, makes a savepoint after the deletion, updates all animals to the product of their weight_kg * -1, rollsback to the previous savepoint, multiplies the weight of ONLY animals with negative weight_kg to the product of weightKG * 1. This is a COMMIT Transaction (permanent change)*/
+/*Deletes all animals born after January 1st 2022, makes a savepoint after the deletion, updates all animals to the product of their weight_kg * -1, rolls-back to the previous savepoint, multiplies the weight of ONLY animals with negative weight_kg to the product of weightKG * -1. This is a COMMIT Transaction (permanent change). RESULT: All remaining animals have positive weight values*/
+
+BEGIN;
+DELETE FROM animals WHERE date_of_birth > '2022-01-01';
+SAVEPOINT SP1;
+UPDATE animals SET weight_kg = weight_kg * -1;
+ROLLBACK TO SP1;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+COMMIT;
