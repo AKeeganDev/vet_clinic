@@ -12,6 +12,10 @@ INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) 
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Blossom', '1998-10-13', 17, TRUE, 3);
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Ditto', '2022-05-14', 22, TRUE, 4);
 
+INSERT INTO owners (full_name, age) VALUES ('Sam Smith', 34), ('Jennifer Orwell', 19), ('Bob', 45), ('Melody Pond', 77), ('Dean Winchester', 14), ('Jodie Whittaker', 38);
+
+INSERT INTO species (name) VALUES ('POKEMON'), ('DIGIMON');
+
 /* Transactions */
 
 /* Add 'unspecified' as Species for each animal in the entire table then ROLLBACK the change */
@@ -40,3 +44,27 @@ UPDATE animals SET weight_kg = weight_kg * -1;
 ROLLBACK TO SP1;
 UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
 COMMIT;
+
+/*Updates species_id for each animal with the correct species type for linking to the species table*/
+BEGIN;
+UPDATE animals SET species_id = 2 WHERE name LIKE '%mon%';
+UPDATE animals SET species_id = 1 WHERE species_id IS NULL;
+COMMIT;
+
+/*Updates owner_id for each animal with the correct owner for linking to the owner table*/
+
+    OWNER TABLE EXAMPLE
+ id |    full_name    | age 
+----+-----------------+-----
+  1 | Sam Smith       |  34
+ 13 | Jennifer Orwell |  19
+ 14 | Bob             |  45
+ 15 | Melody Pond     |  77
+ 16 | Dean Winchester |  14
+ 17 | Jodie Whittaker |  38
+
+UPDATE animals SET owner_id = 1 WHERE name in ('Agumon');
+UPDATE animals SET owner_id = 13 WHERE name in ('Gabumon', 'Pikachu');
+UPDATE animals SET owner_id = 14 WHERE name in ('Devimon', 'Plantmon');
+UPDATE animals SET owner_id = 15 WHERE name in ('Charmander', 'Squirtle', 'Blossom');
+UPDATE animals SET owner_id = 16 WHERE name in ('Angemon', 'Boarmon');
