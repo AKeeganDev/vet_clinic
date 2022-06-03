@@ -42,5 +42,3 @@ alter table animals add column if not exists owner_id int;
 
 alter table animals add constraint species_constraint foreign key (species_id) references species (id);
 alter table animals add constraint owner_constraint foreign key (owner_id) references owners (id);
-
-
