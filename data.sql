@@ -12,9 +12,21 @@ INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) 
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Blossom', '1998-10-13', 17, TRUE, 3);
 INSERT INTO animals (name, date_of_birth, weight_kg, neutered, escape_attempts) VALUES ('Ditto', '2022-05-14', 22, TRUE, 4);
 
+/* Populate Owner sample data. */
 INSERT INTO owners (full_name, age) VALUES ('Sam Smith', 34), ('Jennifer Orwell', 19), ('Bob', 45), ('Melody Pond', 77), ('Dean Winchester', 14), ('Jodie Whittaker', 38);
 
+/* Populate species sample data. */
 INSERT INTO species (name) VALUES ('POKEMON'), ('DIGIMON');
+
+/* Populate vets with sample data. */
+INSERT INTO vets (name, age, date_of_graduation) VALUES ('William Tatcher', 45, '2000-04-23'), ('Maisy Smith', 26, '2019-01-17'), ('Stephanie Mendez', 64, '1981-05-04'), ('Jack Harkness', 38, '2008-06-08');
+
+/* Populate vet specializations with sample data. */
+INSERT INTO specializations (vet_id, species_id) VALUES (5,1), (7,1), (7,2), (8,2);
+
+/* Populate visits with sample data. */
+INSERT INTO visits (animal_id, vet_id, date) VALUES (1, 5,'2020-05-24'), (1, 7,'2020-07-22'), (2, 8,'2021-02-02'), (5, 6,'2020-01-05'), (5, 6,'2020-03-08'), (5, 6,'2020-05-14'), (3, 7,'2021-05-04'), (9, 8,'2021-02-24'), (7, 6,'2019-12-21'), (7, 5,'2020-08-10'), (7, 6,'2021-04-07'), (10, 7,'2019-09-29'), (8, 8,'2020-10-03'), (8, 8,'2020-11-04'), (4, 6,'2019-01-24'), (4, 6,'2019-05-15'), (4, 6,'2020-02-27'), (4, 6,'2020-08-03'), (6, 7,'2020-05-24'), (6, 5,'2021-01-11');
+
 
 /* Transactions */
 
