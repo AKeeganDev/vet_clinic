@@ -3,6 +3,9 @@
 > This repo is to demonstrate my understanding of SQL database management.
 > The files here would create a database in PostgreSQL and update/locate data within the database.
 
+## Diagram
+![image](https://user-images.githubusercontent.com/92178070/172659098-759ad90e-1bd6-4dc9-886a-976171ea22fa.png)
+
 
 ## Getting Started
 
