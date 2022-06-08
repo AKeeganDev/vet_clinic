@@ -4,7 +4,7 @@
 > The files here would create a database in PostgreSQL and update/locate data within the database.
 
 ## Diagram
-![image](https://user-images.githubusercontent.com/92178070/172659098-759ad90e-1bd6-4dc9-886a-976171ea22fa.png)
+![image](https://user-images.githubusercontent.com/92178070/172659972-ae1b29ee-4744-4767-98a6-87aa0771d432.png)
 
 
 ## Getting Started
