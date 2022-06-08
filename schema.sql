@@ -42,3 +42,15 @@ alter table animals add column if not exists owner_id int;
 
 alter table animals add constraint species_constraint foreign key (species_id) references species (id);
 alter table animals add constraint owner_constraint foreign key (owner_id) references owners (id);
+
+/*commands to update database*/
+BEGIN;
+alter table owners add column email varchar(120);
+INSERT INTO visits (animal_id, vet_id, date) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp; >>>>Do this 10 times
+insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com'; >>>>Do this 10 times
+
+create index visits_animalID_asc on visits(animal_id asc);
+create index visits_vetID_asc on visits(vet_id asc);
+create index owners_email_asc on visits(vet_id asc);
+
+
